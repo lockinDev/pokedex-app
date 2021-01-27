@@ -18,3 +18,61 @@ body
     text-align: center;
     position: relative;
 }
+
+.pokedex-app
+{
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.pokedex-app > h1
+{
+    text-align: center;
+    font-size: 3rem;
+    margin: 1rem 0 4rem;
+    color: #444;
+    position: relative;
+}
+
+.pokedex-app div > h1::after
+{
+    content: '';
+    position: relative;
+    display: block;
+    width: 2em;
+    height: 4px;
+    background-color: #FB6C6C;
+    top: 100%;
+    left: 50%;
+    margin-left: -1em;
+}
+
+.pokedex-app div > h1 > i
+{
+    display: inline-block;
+    height: .6em;
+    width: .6em;
+    background-image: url( './img/pokeball.svg' );
+    background-repeat: no-repeat;
+}
+
+/*
+    flags
+*/
+
+.flags img{
+    margin: 10px;
+    width: 33px;
+    height: 20px;
+    top: 5px;
+    cursor: pointer;
+    position: absolute;
+    display: block;
+}
+
+
+.flags img:last-child{   
+    right: 0;
+}
+
+

@@ -1,10 +1,10 @@
 import React from 'react'
-import { PokedexView } from './components/pokedex_view/PokedexView'
+import { AppRouter } from './route/AppRouter'
 
 export const PokedexApp = () => {
     return (
         <div>
-            <PokedexView />
+            <AppRouter />
         </div>
     )
 }

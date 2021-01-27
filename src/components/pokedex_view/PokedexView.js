@@ -1,12 +1,10 @@
 import React, { Fragment } from "react";
+import lngs from '../../helpers/languages'
 import { Navigation } from "../navigation/Navigation";
 
 import './pokedex.css';
 
 export const PokedexView = () => {
-
-
-
 
   return (
     <Fragment>
