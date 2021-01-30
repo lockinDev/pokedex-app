@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
   
  
 
-export const CustomNavLink = () => {
+export const CustomNavLink = (props) => {
     return (
         <NavLink className="navigation-link" activeClassName="active" { ...props }>
             { props.children }
