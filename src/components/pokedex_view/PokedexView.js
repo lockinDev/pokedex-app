@@ -1,21 +1,54 @@
 import React, { Fragment } from "react";
-import lngs from "../../helpers/languages";
+
 import { Navigation } from "../navigation/Navigation";
+
+import { fetchPokemonData, fetchPokemons } from "../../helpers/api";
+import lngs from "../../helpers/languages";
 
 import "./pokedex.css";
 
-export const PokedexView = () => {
+export const PokedexView = (generation) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [language, setLanguage] = useState();
 
   const { i18n } = useTranslation();
 
+  /**Functions */
+
   const handleChangeLanguage = (language) => {
-    console.log(language);
     localStorage.setItem("language", language);
     setLanguage(language);
     i18n.changeLanguage(language);
+  };
+
+  const fillPokemonsArray = () => {
+    // set loading state and reset pokemons array
+    setIsLoading(true);
+    setPokemons([]);
+
+    if (generation.limit == null || generation.offset == null) {
+      return;
+    }
+
+    // fetch first original 151 pokemons
+    fetchPokemons(generation.limit, generation.offset).then(
+      async ({ results }) => {
+        let newPokemons = [];
+
+        // iterate over each pokemon an add to array
+        await Promise.all(
+          results.map(async (pokemon, i) => {
+            await fetchPokemonData(pokemon.name).then(async (json) => {
+              newPokemons[i] = json;
+            });
+          })
+        );
+
+        setPokemons(newPokemons);
+        setIsLoading(false);
+      }
+    );
   };
 
   if (isLoading) {
