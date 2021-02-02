@@ -69,6 +69,17 @@ export const PokedexView = (generation) => {
       </div>
 
       <Navigation />
+
+      <div className="pokedex-view">
+        {pokemons.map((p, i) => {
+          return (
+            <p>{p}</p>
+          );
+        })}
+      </div>
+
+
+
     </Fragment>
   );
 };
