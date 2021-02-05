@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 
 import { Navigation } from "../navigation/Navigation";
+import { Card } from "../card/Card";
+
 
 import { fetchPokemonData, fetchPokemons } from "../../helpers/api";
 import lngs from "../../helpers/languages";
@@ -73,7 +75,11 @@ export const PokedexView = (generation) => {
       <div className="pokedex-view">
         {pokemons.map((p, i) => {
           return (
-            <p>{p}</p>
+            <Card
+                pokemon={p}
+                key={p.id}
+                onClick={() => setSelectedPokemon(i)}
+              />
           );
         })}
       </div>
