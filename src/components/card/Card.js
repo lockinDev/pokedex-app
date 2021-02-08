@@ -1,4 +1,7 @@
 import React from "react";
+import LazyLoad from 'react-lazyload';
+import { fetchTypes } from '../../helpers/api'; 
+
 import "./card.css";
 
 export const Card = ({ pokemon: { name, id, sprites, types }, onClick }) => {
@@ -37,7 +40,11 @@ export const Card = ({ pokemon: { name, id, sprites, types }, onClick }) => {
         </div>
 
         <div className="pokemon-image">
-          <img width={100} alt={name} src={imgURL} />
+          <LazyLoad once>
+            <div className="pokemon-image">
+              <img width={100} alt={name} src={imgURL} />
+            </div>
+          </LazyLoad>
         </div>
       </div>
     </div>
