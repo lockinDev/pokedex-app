@@ -1,0 +1,16 @@
+.details-view-container
+{
+    max-height: 100vh;
+    max-width: 800px;
+    width: 95vw;
+    bottom: 0;
+    left: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: fixed;
+    z-index: 99999;
+    background-color: #FFF;
+    border-radius: 3rem;
+    animation: .3s pull-up-center both ease-out;
+}

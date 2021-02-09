@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import LazyLoad from "react-lazyload";
+
 
 import { Navigation } from "../navigation/Navigation";
 import { Card } from "../card/Card";
@@ -10,6 +12,8 @@ import lngs from "../../helpers/languages";
 import "./pokedex.css";
 
 export const PokedexView = (generation) => {
+  const [pokemons, setPokemons] = useState([]);
+  const [selectedPokemon, setSelectedPokemon] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
 
   const [language, setLanguage] = useState();
@@ -75,15 +79,29 @@ export const PokedexView = (generation) => {
       <div className="pokedex-view">
         {pokemons.map((p, i) => {
           return (
-            <Card
+            <LazyLoad
+              classNamePrefix={" card-container "}
+              key={p.id}
+              once
+              resize
+              placeholder={<Loader isItem={true} />}
+            >
+              <Card
                 pokemon={p}
                 key={p.id}
                 onClick={() => setSelectedPokemon(i)}
               />
+            </LazyLoad>
           );
         })}
       </div>
 
+      {selectedPokemon !== -1 && (
+        <DetailsView
+          pokemon={pokemons[selectedPokemon]}
+          setSelectedPokemon={setSelectedPokemon}
+        />
+      )}
 
 
     </Fragment>
