@@ -14,3 +14,51 @@
     border-radius: 3rem;
     animation: .3s pull-up-center both ease-out;
 }
+
+.details-view-container.hidden
+{
+    animation: .3s pull-down-center both ease-out;
+}
+
+.details-view-container .card-container
+{
+    cursor: auto;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    transform: translateY( 40px );
+    margin-top: -40px;
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.details-view-container .card
+{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-bottom: 25vmin;
+    padding-top: 5vmin;
+    justify-content: center;
+    box-shadow: 0 0 10px 0 rgba( 0,0,0,.3 );
+}
+
+.details-view-container .card .card-title span.type
+{
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.details-view-container .card .pokemon-image
+{
+    display: none;
+}
+
+
+@media screen and ( max-width: 800px )
+{
+    .details-view-container .card .card-title
+    {
+        align-self: center;
+    }
+}
