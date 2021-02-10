@@ -2,6 +2,8 @@ import React, { Fragment, useRef, useState } from 'react'
 import ReactDOM from "react-dom";
 
 import { Card } from "../card/Card";
+import { BackButton } from "../back_button/BackButton";
+
 import './details_view.css';
 
 
@@ -31,8 +33,8 @@ export const DetailsView = (props) => {
 
       return ReactDOM.createPortal(
         <Fragment >
-          <Overlay hidden={hideOverlay} onClick={handleBackClick} />
           <div className="details-view-container shown" ref={ref}>
+            <BackButton onClick={handleBackClick} />
             <Card pokemon={pokemon} />
            
           </div>
