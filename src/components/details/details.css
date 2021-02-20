@@ -10,6 +10,20 @@
     animation: 0.3s pull-up both ease-out .2s;
 }
 
+.details .pokemon-image
+{
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: -2rem;
+    left: 50%;
+    transform: translateX( -50% );
+    max-width: 30%;
+    height: auto;
+    max-height: 20vh;
+    filter: drop-shadow( 0 0 10px rgba( 0,0,0,.2 ) );
+    animation: 0.3s fade-in ease-out .5s both;
+}
+
 
 
 .details .tabs-switch-container
@@ -49,4 +63,43 @@
     left: 0;
     position: absolute;
     background-color: #6C79DB;
+}
+
+.details .tab
+{
+    overflow-y: auto;
+}
+
+.details .tab table
+{
+    width: 100%;
+}
+
+.details .tab table td
+{
+    padding: .5rem;
+    text-transform: capitalize;
+}
+
+.details .tab table td:first-child
+{
+    width: 20%;
+}
+
+.details .tab table td:nth-child( 2 )
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.details .tab table td:nth-child( 2 ) .range-view
+{
+    width: 90%;
+}
+
+.details .tab-evolution .loader
+{
+    padding: 1em;
 }

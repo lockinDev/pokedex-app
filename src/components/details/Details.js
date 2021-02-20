@@ -8,7 +8,7 @@ export const Details = ({ pokemon, setPokemonData }) => {
 
   const switchTab = (e) => {
     e.preventDefault();
-    setTab(e.target.dataset.tab);
+    setTab(e.target.dataset.tab); 
   };
 
   const getClassName = (tabName) => {
@@ -17,6 +17,9 @@ export const Details = ({ pokemon, setPokemonData }) => {
 
   return (
     <div className="details">
+
+      <img src={ imgURL } className="pokemon-image" alt={ pokemon.name } />
+
       <div className="tabs-switch-container">
         <button>{t("details.about.title")}</button>
         <button>{t("details.stats.title")}</button>
