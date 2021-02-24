@@ -4,6 +4,30 @@ import { useTranslation } from 'react-i18next';
 import { fetchTypes } from '../../../helpers/api';
 
 export const About = ({ pokemon }) => {
+
+    const [typesFetch, setTypesFetch] = useState([]); 
+
+    const { t } = useTranslation();
+
+    useEffect(() => {
+        fetchTypes(pokemon.types, typesFetch, setTypesFetch);
+        
+
+    }, [pokemon.types]);
+
+
+     // join ability names
+     const abilities = pokemon.abilities.map( ( t ) => {
+        return t.ability.name.replace( '-', ' ' );
+    }).join( ', ' );
+
+
+    // calculate height in cm
+    const height = pokemon.height * 10;
+
+    // calculate weight in kg
+    const weight = pokemon.weight / 10;
+
     return (
         <div className="tab tab-about">
             
