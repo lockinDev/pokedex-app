@@ -47,6 +47,49 @@ export const Evolution = ({ pokemon, changePokemon }) => {
     }, [ currentEvolution ])
 
 
+    const getNextEvolution = () => {
+
+        if( currentEvolution.length === 0 || currentEvolution.evolves_to.length === 0 )
+            return null;
+
+
+        const nextEvolution = currentEvolution.evolves_to[0];
+        const details       = nextEvolution.evolution_details[0];
+        
+
+        // extract useful data
+        const current       = currentEvolution.species.name;
+        const next          = nextEvolution.species.name;
+        const trigger       = triggersDisplayName[details.trigger.name];
+        const triggerValue  = details.min_level || details.min_happiness || details.item?.name.replace( '-', ' ' ) || '';
+        const currentId     = extractId( currentEvolution.species.url );
+        const nextId        = extractId( nextEvolution.species.url );
+
+        // get images URL
+        const currentImage  = getImageURL( currentId );
+        const nextImage     = getImageURL( nextId );
+
+
+        // set current evolution to next evolution
+        setCurrentEvolution( prev => ( prev.evolves_to[0] ));
+
+        // push new evolution object
+        setEvolutionChain( prev => {
+
+            return [ ...prev, { 
+                current,
+                next,
+                trigger,
+                triggerValue,
+                currentId,
+                nextId,
+                currentImage,
+                nextImage
+            }];
+            
+        });
+
+    }
 
     return (
         <div>
