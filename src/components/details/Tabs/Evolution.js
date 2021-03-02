@@ -80,10 +80,8 @@ export const Evolution = ({ pokemon, changePokemon }) => {
   };
 
   const getImageURL = (id) => {
-
     const baseURL =
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other";
-
 
     return `${baseURL}/official-artwork/${id}.png`;
   };
@@ -100,14 +98,58 @@ export const Evolution = ({ pokemon, changePokemon }) => {
   };
 
   return (
-    <div>
-      <h1>evolution</h1>
+    <div className="tab tab-evolution">
+      <h3>{t("details.evol.subtitle")}</h3>
+
+      {loading && <Loader />}
+
+      {!loading && evolutionChain.length === 0 && (
+        <div>This pokemon doesn't evolove</div>
+      )}
+
+      {!loading &&
+        evolutionChain.map((e, i) => {
+          return (
+            <div className="evolution-container" key={i}>
+              <div className="evolve-container evolve-from">
+                <div
+                  className="image-container"
+                  onClick={() => {
+                    fetchPokemon(e.current);
+                  }}
+                >
+                  <div className="bg-pokeball"></div>
+                  <img alt={e.current} src={e.currentImage} />
+                </div>
+
+                <span>{e.current}</span>
+              </div>
+
+              <div className="trigger-container">
+                <div className="arrow"></div>
+                {e.trigger} {e.triggerValue}
+              </div>
+
+              <div
+                className="evolve-container evolve-to"
+                onClick={() => {
+                  fetchPokemon(e.next);
+                }}
+              >
+                <div className="image-container">
+                  <div className="bg-pokeball"></div>
+                  <img alt={e.next} src={e.nextImage} />
+                </div>
+
+                <span>{e.next}</span>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 };
 
-const extractId = ( url ) => {
-
-    return url.match( /\/(\d+)\// )[1];
-
-}
+const extractId = (url) => {
+  return url.match(/\/(\d+)\//)[1];
+};
