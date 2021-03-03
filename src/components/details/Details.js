@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { About } from './Tabs/About'
+import { BaseStats } from './Tabs/BaseStats'
+import { Evolution } from './Tabs/Evolution'
+
 import "./details.css";
 
 export const Details = ({ pokemon, setPokemonData }) => {
@@ -53,11 +57,13 @@ export const Details = ({ pokemon, setPokemonData }) => {
         </button>
       </div>
 
-      {tab === "about" }
+      {tab === "about" && <About pokemon={pokemon} />}
 
-      {tab === "base-stats" }
+      {tab === "base-stats" && <BaseStats stats={pokemon.stats} />}
 
-      {tab === "evolution" }
+      {tab === "evolution" && (
+        <Evolution pokemon={pokemon} changePokemon={changePokemon} />
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
-import '../../range_view/RangeView'
+import {RangeView} from '../../range_view/RangeView'
 
 export const BaseStats = ({ stats }) => {
 
