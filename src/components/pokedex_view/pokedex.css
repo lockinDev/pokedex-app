@@ -1,21 +1,19 @@
 .pokedex-view {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pokedex-view > div {
+  flex-basis: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 800px) {
   .pokedex-view > div {
-    flex-basis: 100%;
-    height: auto;
+    flex-basis: 50%;
+    height: 30vh;
   }
-
-  @media screen and (min-width: 800px) {
-    .pokedex-view > div {
-      flex-basis: 50%;
-      height: 30vh;
-    }
-  }
-  
-
+}
 
 @media screen and (min-width: 1200px) {
   .pokedex-view > div {

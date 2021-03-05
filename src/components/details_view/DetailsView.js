@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { Card } from "../card/Card";
 import { BackButton } from "../back_button/BackButton";
 import { Overlay } from "../overlay/Overlay";
-
+import { Details } from "../details/Details"
 import "./details_view.css";
 
 export const DetailsView = (props) => {
@@ -32,6 +32,10 @@ export const DetailsView = (props) => {
       <div className="details-view-container shown" ref={ref}>
         <BackButton onClick={handleBackClick} />
         <Card pokemon={pokemon} />
+        <Details
+          pokemon={pokemon}
+          setPokemonData={setPokemonData } 
+        />
       </div>
     </Fragment>,
     document.body

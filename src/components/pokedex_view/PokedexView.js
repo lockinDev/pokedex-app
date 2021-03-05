@@ -1,22 +1,26 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import LazyLoad from "react-lazyload";
-
+import { useTranslation } from "react-i18next";
 
 import { Navigation } from "../navigation/Navigation";
 import { Card } from "../card/Card";
-
-
+import { Loader } from "../loader/Loader";
+import { DetailsView } from "../details_view/DetailsView";
 import { fetchPokemonData, fetchPokemons } from "../../helpers/api";
-import lngs from "../../helpers/languages";
+import { lngs } from "../../helpers/languages";
 
 import "./pokedex.css";
 
-export const PokedexView = (generation) => {
+export const PokedexView = ({generation}) => {
   const [pokemons, setPokemons] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
 
   const [language, setLanguage] = useState();
+
+  useEffect(() => {
+    fillPokemonsArray();
+  }, [generation, language]);
 
   const { i18n } = useTranslation();
 
@@ -57,12 +61,13 @@ export const PokedexView = (generation) => {
     );
   };
 
+
   if (isLoading) {
     return <Loader />;
   }
 
   return (
-    <Fragment>
+    <>
       <div className="flags">
         {Object.keys(lngs).map((lng) => (
           <img
@@ -102,8 +107,6 @@ export const PokedexView = (generation) => {
           setSelectedPokemon={setSelectedPokemon}
         />
       )}
-
-
-    </Fragment>
+    </>
   );
 };

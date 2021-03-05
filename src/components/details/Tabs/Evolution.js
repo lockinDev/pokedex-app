@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-import { Loader } from "../../Loader";
-import { fetchPokemonEvolutionChain, fetchPokemonData } from "../../../api";
+import { Loader } from "../../loader/Loader";
+import { fetchPokemonEvolutionChain, fetchPokemonData } from "../../../helpers/api";
 
-export const Evolution = ({ pokemon, changePokemon }) => {
+export const Evolution = ({ pokemon, changePokemon }) => { 
   const [currentEvolution, setCurrentEvolution] = useState([]);
   const [evolutionChain, setEvolutionChain] = useState([]);
   const [loading, setLoading] = useState(true);
